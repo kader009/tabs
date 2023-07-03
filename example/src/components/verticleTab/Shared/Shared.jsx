@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faPlay, faSquareCheck, faSquareXmark, faPowerOff, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons';
 
@@ -6,6 +6,15 @@ import { faDownload, faPlay, faSquareCheck, faSquareXmark, faPowerOff, faClockRo
 
 
 const Shared = () => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10; // Replace with the actual total number of pages
+
+  // TODO: Implement logic to fetch data for the current page
+
+
+
+
 
   const modalData = () =>{
     // Get the modal and trigger elements
@@ -46,7 +55,7 @@ modalClose.addEventListener('click', () => {
 
 
 
-      <div className="w-full">
+      <div className="w-full mb-10">
   <table className="min-w-full bg-white">
     <thead>
       <tr> 
@@ -92,6 +101,44 @@ modalClose.addEventListener('click', () => {
   </table>
 </div>
 
+
+<div className='ms-0 me-36'>
+      {/* Pagination buttons */}
+      <div className="flex justify-center">
+        {/* Previous button */}
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+          className="px-4 py-2 mx-1 bg-gray-200 hover:bg-gray-300 rounded"
+        >
+          Previous
+        </button>
+
+        {/* Page numbers */}
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber)}
+            className={`px-4 py-2 mx-1 ${
+              currentPage === pageNumber ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300'
+            } rounded`}
+          >
+            {pageNumber}
+          </button>
+        ))}
+
+        {/* Next button */}
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+          className="px-4 py-2 mx-1 bg-gray-200 hover:bg-gray-300 rounded"
+        >
+          Next
+        </button>
+      </div>
+
+      {/* TODO: Render your data */}
+    </div>
 
 
 
