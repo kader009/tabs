@@ -8,19 +8,19 @@ function App() {
   const tabs = [
     {
       title: 'Process',
-      content: 'Content for Tab 1',
+      content: <Shared/>,
     },
     {
       title: 'Jobs',
-      content: 'Content for Tab 2',
+      content: <Shared/>,
     },
     {
       title: 'Apps',
-      content: 'Content for Tab 3',
+      content: <Shared/>,
     },
     {
       title: 'Triggers',
-      content: 'Content for Tab 4',
+      content: <Shared/>,
     },
     {
       title: 'Logs',
